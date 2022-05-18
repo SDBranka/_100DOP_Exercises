@@ -1,0 +1,7 @@
+Squirrel Data:
+https://data.cityofnewyork.us/Environment/2018-Central-Park-Squirrel-Census-Squirrel-Data/vfnx-vebw
+
+Pandas Documentation:
+https://pandas.pydata.org/docs/getting_started/index.html#getting-started
+
+https://pandas.pydata.org/docs/reference/series.html#computations-descriptive-stats
