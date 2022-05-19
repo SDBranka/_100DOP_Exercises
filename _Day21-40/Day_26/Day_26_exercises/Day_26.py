@@ -12,6 +12,9 @@
 # Use the keyword method for starting the List comprehension and fill in the relevant parts.
 # Make sure the squared_numbers is printed into the console for the code checking to work.
 
+from fileinput import close
+
+
 numbers = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
 # 🚨 Do Not Change the code above 👆
 #Write your 1 line code 👇 below:
@@ -73,13 +76,15 @@ result = [number for number in numbers if number % 2 == 0]
 #     Remember you can convert a string to an int using the int() 
 #       method. https://www.w3schools.com/python/ref_func_int.asp
 
-f1 = open("file1.txt", "r")
-# print(f1.readlines())
-f1_list = f1.readlines()
-f2 = open("file2.txt", "r")
-# print(f2.readlines()) 
-f2_list = f2.readlines()
-result = [int(num) for num in f1_list if num in f2_list]
+
+with open("file1.txt", "r") as f1:
+    f1_data = f1.readlines()
+
+with open("file2.txt", "r") as f2:
+    f2_data = f2.readlines()
+
+result = [int(num) for num in f1_data if num in f2_data]
+
 # Write your code above 👆
 
 # print(result)
@@ -119,4 +124,50 @@ sentence = "What is the Airspeed Velocity of an Unladen Swallow?"
 result = {word:len(word) for word in sentence.split()}
 
 # print(result)
+
+
+# Ex5
+# convert a dictionary with temps in Celsius to Fahrenheit
+weather_c = {
+    "Monday": 12,
+    "Tuesday": 14,
+    "Wednesday": 15,
+    "Thursday": 14,
+    "Friday": 21,
+    "Saturday": 22,
+    "Sunday": 24,
+}
+# 🚨 Don't change code above 👆
+
+
+# Write your code 👇 below:
+# new_dict0 = {new_key:new_value} for item in list}
+# new_dict1 = {new_key:new_value for (key, value) in dict.items()}
+
+weather_f = {day:((temp * 9/5) + 32) for (day, temp) in weather_c.items()}
+
+
+print(weather_f)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
