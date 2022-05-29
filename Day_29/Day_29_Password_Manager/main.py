@@ -1,5 +1,5 @@
 import tkinter
-# import pandas
+from tkinter import messagebox
 
 LABEL_FONT = ("Arial", 12, "normal")
 
@@ -14,11 +14,19 @@ def add_button_clicked():
     website_entered = website_input.get()
     email_entered = email_input.get()
     password_entered = password_input.get()
-    website_input.delete(0,tkinter.END)
-    password_input.delete(0,tkinter.END)
-    # append data to file
-    with open("data.txt", "a") as file:
-        file.write(f"{website_entered} | {email_entered} | {password_entered}\n")
+    # show a message box to confirm inputs
+    # messagebox.showinfo(title = "Title", message = "Message")
+    # askokcancel returns a boolean value
+    is_ok = messagebox.askokcancel(title = website_entered, 
+                            message = f"These are the details entered:\n Email entered: {email_entered}\nPassword entered: {password_entered}\n Is it okay to save?"
+    )
+    if is_ok:
+        # append data to file
+        with open("data.txt", "a") as file:
+            file.write(f"{website_entered} | {email_entered} | {password_entered}\n")
+            # clear the input fields (from first character to the last)
+            website_input.delete(0,tkinter.END)
+            password_input.delete(0,tkinter.END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -68,7 +76,7 @@ email_input = tkinter.Entry(width = 36)
 # prepopulate field with the most common entry
 # email_input.insert(index(where to insert text), field(the text to insert))
 # 0 means the first character END starts it at the end
-email_input.insert(0, "exampleEmail@something.com")
+email_input.insert(tkinter.END, "exampleEmail@something.com")
 email_input.grid(row = 2, column = 1, columnspan = 2)
 
 # password entry

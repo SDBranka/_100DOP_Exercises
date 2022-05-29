@@ -1,2 +1,8 @@
 Tkinter Canvas Documentation:
 https://tkdocs.com/tutorial/canvas.html
+
+Python write file:
+https://www.w3schools.com/python/python_file_write.asp
+
+tkinter documentation about widgits @ entry
+https://tkdocs.com/tutorial/widgets.html#entry
