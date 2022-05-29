@@ -1,0 +1,2 @@
+aaaaa | exampleEmail@something.com | aaaaa
+bbbbb | exampleEmail@something.com | bbbbb

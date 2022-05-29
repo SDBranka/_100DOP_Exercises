@@ -2,9 +2,9 @@ import tkinter
 import math
 
 
-def add_checkmark(marks_list):
-    marks_list.append("✔")
-    return marks_list
+# def add_checkmark(marks_list):
+#     marks_list.append("✔")
+#     return marks_list
 
 
 # ---------------------------- CONSTANTS ------------------------------- #
@@ -118,15 +118,12 @@ reset_button.grid(row = 2, column = 2)
 
 # check marks
 # marks = ["✔", "✔"]
-marks = []
+marks = ""
 check_marks = tkinter.Label(text = marks, 
                             font = ("Arial", 16, "bold"),
                             fg = GREEN, bg = YELLOW
 )
 check_marks.grid(row = 3, column = 1)
-
-
-
 
 
 window.mainloop()
