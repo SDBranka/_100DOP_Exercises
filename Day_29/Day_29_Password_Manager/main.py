@@ -1,10 +1,34 @@
 import tkinter
 from tkinter import messagebox
+import random
+import pyperclip
+
 
 LABEL_FONT = ("Arial", 12, "normal")
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
+def gen_pw_button_clicked():
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+    password_letters = [random.choice(letters) for i in range(random.randint(8, 10))]
+    password_numbers = [random.choice(numbers) for i in range(random.randint(2, 4))]
+    password_symbols = [random.choice(symbols) for i in range(random.randint(2, 4))]
+
+    password_list = password_letters + password_numbers + password_symbols
+
+    random.shuffle(password_list)
+
+    # combine the password_list to a single string with no separation between elements
+    password = "".join(password_list)
+
+    print(f"Your password is: {password}")
+    password_input.insert(tkinter.END, password)
+    # stores the password to users clipboard to enable pasting elsewhere
+    pyperclip.copy(password)
+
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 # on add_button click take in the inputs and 
@@ -14,19 +38,23 @@ def add_button_clicked():
     website_entered = website_input.get()
     email_entered = email_input.get()
     password_entered = password_input.get()
-    # show a message box to confirm inputs
-    # messagebox.showinfo(title = "Title", message = "Message")
-    # askokcancel returns a boolean value
-    is_ok = messagebox.askokcancel(title = website_entered, 
-                            message = f"These are the details entered:\n Email entered: {email_entered}\nPassword entered: {password_entered}\n Is it okay to save?"
-    )
-    if is_ok:
-        # append data to file
-        with open("data.txt", "a") as file:
-            file.write(f"{website_entered} | {email_entered} | {password_entered}\n")
-            # clear the input fields (from first character to the last)
-            website_input.delete(0,tkinter.END)
-            password_input.delete(0,tkinter.END)
+
+    if len(website_entered) == 0 or len(email_entered) == 0 or len(password_entered) == 0:
+        messagebox.showerror('error', 'No field may be left empty')
+    else:
+        # show a message box to confirm inputs
+        # messagebox.showinfo(title = "Title", message = "Message")
+        # askokcancel returns a boolean value
+        is_ok = messagebox.askokcancel(title = website_entered, 
+                                message = f"These are the details entered:\n Email entered: {email_entered}\nPassword entered: {password_entered}\n Is it okay to save?"
+        )
+        if is_ok:
+            # append data to file
+            with open("data.txt", "a") as file:
+                file.write(f"{website_entered} | {email_entered} | {password_entered}\n")
+                # clear the input fields (from first character to the last)
+                website_input.delete(0, tkinter.END)
+                password_input.delete(0, tkinter.END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -95,7 +123,7 @@ add_button.grid(row = 4, column = 1, columnspan = 2)
 # column 2
 # genpass_button
 genpass_button = tkinter.Button(text = "Generate Password",
-                        # command = add_button_clicked,
+                        command = gen_pw_button_clicked,
                         fg = "white",
                         bg = "blue"
 )
