@@ -2,11 +2,6 @@ import tkinter
 import math
 
 
-# def add_checkmark(marks_list):
-#     marks_list.append("✔")
-#     return marks_list
-
-
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
