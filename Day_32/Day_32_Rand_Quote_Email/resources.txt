@@ -1,0 +1,5 @@
+smtplib — SMTP protocol client
+https://docs.python.org/3/library/smtplib.html
+
+datetime — Basic date and time types
+https://docs.python.org/3/library/datetime.html
