@@ -34,7 +34,10 @@ quote_text = canvas.create_text(150, 207,
 canvas.grid(row=0, column=0)
 
 kanye_img = tkinter.PhotoImage(file="images/kanye.png")
-kanye_button = tkinter.Button(image=kanye_img, highlightthickness=0, command=get_quote)
+kanye_button = tkinter.Button(image=kanye_img, 
+                                highlightthickness=0, 
+                                command=get_quote
+)
 kanye_button.grid(row=1, column=0)
 
 
