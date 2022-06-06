@@ -9,7 +9,7 @@ def get_quote():
     response.raise_for_status()
     # parse the JSON to obtain the quote text
     quote = response.json()["quote"]
-    print(f"quote:\n{quote}")
+    # print(f"quote:\n{quote}")
     # Display the quote in the canvas' quote_text widget
     canvas.itemconfig(quote_text, 
                         text=quote, 
