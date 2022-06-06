@@ -1,7 +1,8 @@
 import requests
+import os
 
 
-api_key = "fe396200a403912f8c544252a3725262"
+api_key = os.environ.get("OWM_API_KEY")
 
 
 # https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid={api_key}
